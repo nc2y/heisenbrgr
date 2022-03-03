@@ -91,7 +91,7 @@ infoFromFeedback <- function(feedback, startDate, endDate) {
     out[, allDates] <- NA
     for (i in 1:nrow(out)) {
         tmp <- unique(feedbackSubset$date[feedbackSubset$vendor_hash == out$vendor_hash[i]])
-        out[i, allDates] <- as.numeric(allDates %in% tmp)
+        out[i, allDates] <- as.list(as.numeric(allDates %in% tmp))
     }
 
     ret <- list(out = out, vendorHashes = out$vendor_hash, itemHashes = unique(feedbackSubset$item_hash))
